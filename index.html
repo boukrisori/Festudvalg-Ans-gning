@@ -136,62 +136,28 @@ footer{
 }
 </style>
 
-<style id="XP-BLISS-BACKGROUND">
-html{
-  min-height:100%;
-  background:#5aa7ff url("windows_xp_bg.jpg") center center / cover fixed no-repeat!important;
-}
-body{
-  min-height:100vh;
-  background-color:transparent!important;
-  background-image:none!important;
-}
-body.party-on{
-  background-color:#000!important;
-}
-</style>
 
-
-<style id="XP-BLISS-FINAL-FIX">
-html, body{
-  min-height:100%!important;
-}
-body:not(.party-on){
-  background-color:#5aa7ff!important;
-  background-image:url("./windows_xp_bg.jpg")!important;
-  background-position:center center!important;
-  background-size:cover!important;
-  background-repeat:no-repeat!important;
-  background-attachment:fixed!important;
-}
-body.party-on{
-  background:#000!important;
-  background-image:none!important;
-}
-</style>
-
-
-<style id="XP-BLISS-ABSOLUTE-FIX">
-html,body{min-height:100%!important;background:transparent!important}
-body::before{
-  content:""!important;
+<style id="XP-BACKGROUND-LAYER-CSS">
+#xpBackground{
   position:fixed!important;
   inset:0!important;
-  z-index:-9999!important;
+  width:100vw!important;
+  height:100vh!important;
+  z-index:0!important;
   pointer-events:none!important;
-  background-color:#5aa7ff!important;
-  background-image:url("https://raw.githubusercontent.com/boukrisori/Festudvalg-Ans-gning/main/windows_xp_bg.jpg")!important;
-  background-position:center center!important;
-  background-repeat:no-repeat!important;
-  background-size:cover!important;
+  background:#5aa7ff url("./windows_xp_bg.jpg") center center / cover no-repeat!important;
 }
-body.party-on::before{
-  background:#000!important;
+body{background:transparent!important;position:relative!important;}
+body > *:not(#xpBackground):not(#discoFxLayer):not(.confetti-bit):not(#playExplosion){
+  position:relative;
+  z-index:2;
 }
+body.party-on #xpBackground{background:#000!important;}
 </style>
 
 </head>
 <body>
+<div id="xpBackground" aria-hidden="true"></div>
 <div class="top">FESTUDVALGET.EXE&nbsp;&nbsp; C:\PERSONALE\OLE-001.DAT &nbsp;&nbsp; <span class="blink">● ONLINE</span></div>
 <div class="marquee"><span>★ OLE-001 ★ ORI ★ VISUELT DESIGN ★ FESTUDVALGET ★ OLE-001 ★ ORI ★ VISUELT DESIGN ★</span></div>
 
