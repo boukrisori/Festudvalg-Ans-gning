@@ -1070,11 +1070,11 @@ body > *:not(#discoFxLayer):not(.confetti-bit):not(#playExplosion):not(.retro-ad
 <style id="V7-MORE-POPUPS">
 #popAd4{left:18%;top:62%}#popAd5{right:20%;top:12%}#popAd6{left:44%;top:70%}#popAd7{right:3%;top:28%}#popAd8{left:2%;top:38%}
 </style>
-<div class="retro-popup popup-hidden" id="popAd4"><div class="popbar"><span>CHEAP_FLIGHTS_NOW!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ffff"><strong>MALLORCA<br>79 KR.</strong><br>Kun én vej. Resten er dit problem.<br><span class="fakebtn">BOOK NU!!!</span></div></div>
-<div class="retro-popup popup-hidden" id="popAd5"><div class="popbar"><span>RAM_DOWNLOADER_2001.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ff00"><strong>DOWNLOAD<br>MORE RAM</strong><br>+512 MB GRATIS!!!<br><span class="fakebtn">INSTALLÉR</span></div></div>
-<div class="retro-popup popup-hidden" id="popAd6"><div class="popbar"><span>CASINO_JACKPOT_FINAL.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff0"><strong>€ 9.999.999<br>JACKPOT</strong><br>DU ER NÆSTEN VINDER!!!<br><span class="fakebtn">SPIN!!!</span></div></div>
-<div class="retro-popup popup-hidden" id="popAd7"><div class="popbar"><span>DOCTORS_HATE_THIS_TRICK.html</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff66cc"><strong>LÆGER HADER<br>DENNE GRØNTSAG</strong><br>Nr. 4 vil chokere dig.<br><span class="fakebtn">SE LISTEN</span></div></div>
-<div class="retro-popup popup-hidden" id="popAd8"><div class="popbar"><span>FREE_RINGTONE!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#000;color:#0f0"><strong>CRAZY FROG<br>GRATIS*</strong><br><small>*abonnement 199 kr./uge for evigt</small><br><span class="fakebtn">JA TAK</span></div></div>
+<div class="retro-popup popup-hidden" id="popAd4"><div class="popbar"><span>CHEAP_FLIGHTS_NOW!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ffff"><strong>MALLORCA<br>79 KR.</strong><br>Kun én vej. Resten er dit problem.<br><a class="fakebtn" href="https://www.ryanair.com/" target="_blank" rel="noopener">BOOK NU!!!</a></div></div>
+<div class="retro-popup popup-hidden" id="popAd5"><div class="popbar"><span>RAM_DOWNLOADER_2001.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ff00"><strong>DOWNLOAD<br>MORE RAM</strong><br>+512 MB GRATIS!!!<br><a class="fakebtn" href="https://downloadmoreram.com/" target="_blank" rel="noopener">INSTALLÉR</a></div></div>
+<div class="retro-popup popup-hidden" id="popAd6"><div class="popbar"><span>CASINO_JACKPOT_FINAL.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff0"><strong>€ 9.999.999<br>JACKPOT</strong><br>DU ER NÆSTEN VINDER!!!<br><a class="fakebtn" href="https://www.spillemyndigheden.dk/" target="_blank" rel="noopener">SPIN!!!</a></div></div>
+<div class="retro-popup popup-hidden" id="popAd7"><div class="popbar"><span>DOCTORS_HATE_THIS_TRICK.html</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff66cc"><strong>LÆGER HADER<br>DENNE GRØNTSAG</strong><br>Nr. 4 vil chokere dig.<br><a class="fakebtn" href="https://www.sundhed.dk/" target="_blank" rel="noopener">SE LISTEN</a></div></div>
+<div class="retro-popup popup-hidden" id="popAd8"><div class="popbar"><span>FREE_RINGTONE!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#000;color:#0f0"><strong>CRAZY FROG<br>GRATIS*</strong><br><small>*abonnement 199 kr./uge for evigt</small><br><a class="fakebtn" href="https://www.youtube.com/watch?v=k85mRPqvMbE" target="_blank" rel="noopener">JA TAK</a></div></div>
 <script id="V7-POPUP-SPAM">
 (function(){
  const pops=[...document.querySelectorAll('.retro-popup')];
@@ -1414,6 +1414,19 @@ body.party-on [data-answer="i"]{
 })();
 </script>
 
+<script id="POPUP-REAL-LINKS">
+(function(){
+  document.querySelectorAll('.retro-popup').forEach(function(p){
+    var a=p.querySelector('a.fakebtn[href]');
+    if(!a)return;
+    p.style.cursor='pointer';
+    p.addEventListener('click',function(e){
+      if(e.target.closest('.popclose') || e.target.closest('a')) return;
+      window.open(a.href,'_blank','noopener');
+    });
+  });
+})();
+</script>
 </body>
 </html>
 <style>
