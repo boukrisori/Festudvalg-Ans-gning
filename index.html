@@ -170,6 +170,26 @@ body.party-on{
 }
 </style>
 
+
+<style id="XP-BLISS-ABSOLUTE-FIX">
+html,body{min-height:100%!important;background:transparent!important}
+body::before{
+  content:""!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:-9999!important;
+  pointer-events:none!important;
+  background-color:#5aa7ff!important;
+  background-image:url("https://raw.githubusercontent.com/boukrisori/Festudvalg-Ans-gning/main/windows_xp_bg.jpg")!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+}
+body.party-on::before{
+  background:#000!important;
+}
+</style>
+
 </head>
 <body>
 <div class="top">FESTUDVALGET.EXE&nbsp;&nbsp; C:\PERSONALE\OLE-001.DAT &nbsp;&nbsp; <span class="blink">● ONLINE</span></div>
