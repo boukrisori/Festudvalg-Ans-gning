@@ -139,37 +139,8 @@ footer{
 
 
 
-<style id="XP-BACKGROUND-V3">
-html{background:#5aa7ff!important}
-body{
-  background:transparent!important;
-  background-image:none!important;
-}
-#xp-bg{
-  position:fixed!important;
-  inset:0!important;
-  z-index:1!important;
-  pointer-events:none!important;
-  overflow:hidden!important;
-}
-#xp-bg img{
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-}
-body > *:not(#xp-bg):not(#discoFxLayer):not(.confetti-bit):not(#playExplosion){
-  position:relative;
-  z-index:10;
-}
-body.party-on #xp-bg{display:none!important}
-body.party-on{background:#000!important}
-</style>
-
 </head>
 <body>
-<div id="xp-bg" aria-hidden="true"><img src="windows_xp_bg.jpg?rev=3" alt=""></div>
 <div class="top">FESTUDVALGET.EXE&nbsp;&nbsp; C:\PERSONALE\OLE-001.DAT &nbsp;&nbsp; <span class="blink">● ONLINE</span></div>
 <div class="marquee"><span>★ OLE-001 ★ ORI ★ VISUELT DESIGN ★ FESTUDVALGET ★ OLE-001 ★ ORI ★ VISUELT DESIGN ★</span></div>
 
@@ -1456,4 +1427,24 @@ nav a{font-family:Verdana,Arial,sans-serif!important;font-size:12px!important}
 
 <style>
 .rec-caption{display:none!important}
+</style>
+
+<style id="XP-FINAL">
+html{
+  min-height:100%!important;
+  background:#5aa7ff!important;
+}
+body{
+  min-height:100vh!important;
+  background-color:#5aa7ff!important;
+  background-image:url("https://raw.githubusercontent.com/boukrisori/Festudvalg-Ans-gning/main/windows_xp_bg.jpg?x=4")!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-attachment:fixed!important;
+}
+body.party-on{
+  background-color:#000!important;
+  background-image:none!important;
+}
 </style>
