@@ -138,32 +138,38 @@ footer{
 
 
 
-<style id="XP-BACKGROUND-FRESH">
-html,body{min-height:100%;margin:0}
-body{background:#5aa7ff!important}
-#xpBackgroundImage{
+
+<style id="XP-BACKGROUND-V3">
+html{background:#5aa7ff!important}
+body{
+  background:transparent!important;
+  background-image:none!important;
+}
+#xp-bg{
   position:fixed!important;
-  top:0!important;
-  left:0!important;
-  width:100vw!important;
-  height:100vh!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+#xp-bg img{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
   object-fit:cover!important;
   object-position:center center!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  display:block!important;
 }
-body > *:not(#xpBackgroundImage):not(#discoFxLayer):not(.confetti-bit):not(#playExplosion){
+body > *:not(#xp-bg):not(#discoFxLayer):not(.confetti-bit):not(#playExplosion){
   position:relative;
-  z-index:2;
+  z-index:10;
 }
-body.party-on #xpBackgroundImage{display:none!important}
+body.party-on #xp-bg{display:none!important}
 body.party-on{background:#000!important}
 </style>
 
 </head>
 <body>
-<img id="xpBackgroundImage" src="./windows_xp_bg.jpg?v=20260923-2" alt="" aria-hidden="true">
+<div id="xp-bg" aria-hidden="true"><img src="windows_xp_bg.jpg?rev=3" alt=""></div>
 <div class="top">FESTUDVALGET.EXE&nbsp;&nbsp; C:\PERSONALE\OLE-001.DAT &nbsp;&nbsp; <span class="blink">● ONLINE</span></div>
 <div class="marquee"><span>★ OLE-001 ★ ORI ★ VISUELT DESIGN ★ FESTUDVALGET ★ OLE-001 ★ ORI ★ VISUELT DESIGN ★</span></div>
 
