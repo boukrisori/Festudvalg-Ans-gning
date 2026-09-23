@@ -1,0 +1,29 @@
+
+V5: Reklamerne er nu helt uvedkommende spam-/bannerreklamer. Nogle klik sender med vilje til rigtige danske mediesider som Ekstra Bladet, B.T. og TV 2.
+
+V6 FIX:
+- Reklamesøjler er hard-fixed til browserens viewport og følger skærmen under scroll.
+- De kan ikke falde ned i dokumentflowet.
+- Musikafspilleren låses nederst til højre mens sangen spiller.
+- Playeren har højeste z-index og kan ikke gemme sig bag reklamer, konfetti, popups eller andet indhold.
+
+V8:
+- Player-fix er nu lavet ved fysisk at flytte player-elementet direkte til <body>, mens sangen spiller.
+  Det betyder, at transforms/animationer på sektioner ikke længere kan ødelægge position:fixed.
+- Playeren flyttes tilbage til sin oprindelige plads ved pause/stop.
+- Tilføjet fem animerede old-web GIFs: Under Construction, spinning e-mail, NEW!, skull og HOT!!!.
+- GIFs er blandet ind mellem reklamerne og spredt enkelte steder langs siden.
+
+V9:
+- Reklamer bruger nu blandede fonte: Impact, Times New Roman, Courier New, Arial, Georgia og Arial Narrow.
+- Når Supernova spiller, dæmpes siden ca. 32 %, mens disco-gradient og spotlights får mere kontrast.
+- Tilføjet fem GIFs fra de Giphy-links, som The Prompt-artiklen "Power Ranking: The Top 10 Best GIFs Ever" indlejrer.
+- De fem eksterne GIFs kræver internetforbindelse. Resten af siden og de lokale retro-GIFs ligger stadig i pakken.
+
+V10:
+- The Prompt/Giphy GIFs ligger ikke længere nede gennem siden.
+- De ligger i de samme fixed side-rails som reklamerne, helt fra toppen.
+- Når musikken er SLUKKET: reklamer.
+- Når musikken er TÆNDT: reklamerne skjules og erstattes af en tæt GIF-wall i begge sider.
+- Når musikken pauses/stoppes: GIF-wall forsvinder og reklamerne kommer tilbage.
+- GIFs bruger hele højden/bredden af side-spacet med object-fit: cover.

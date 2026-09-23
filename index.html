@@ -1,0 +1,1305 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLE-001 // FESTUDVALGET</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#bdbdbd;
+  color:#000;
+  font-family:Arial,Helvetica,sans-serif;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0,rgba(0,0,0,.025) 1px,transparent 1px,transparent 3px);
+}
+a{color:#0000ee;text-decoration:underline}
+a:visited{color:#551a8b}
+.top{
+  background:#000;color:#00ff00;
+  font:700 12px Verdana,Arial,sans-serif;
+  padding:5px 8px;
+  border-bottom:3px ridge #fff;
+  white-space:nowrap;overflow:hidden
+}
+.marquee{
+  background:#ff0;color:#000;
+  border-top:3px solid #000;border-bottom:3px solid #000;
+  font:900 20px "Arial Black",Arial,sans-serif;
+  overflow:hidden;white-space:nowrap;padding:4px 0
+}
+.marquee span{display:inline-block;animation:move 14s linear infinite}
+@keyframes move{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+.window{
+  width:min(1180px,96vw);margin:14px auto;
+  border:3px outset #eee;background:#c0c0c0;
+  box-shadow:6px 6px 0 #000
+}
+.titlebar{
+  background:#000080;color:#fff;padding:4px 7px;
+  font:bold 16px Arial,sans-serif;letter-spacing:.2px
+}
+.controls{float:right}
+.controls b{display:inline-block;background:#c0c0c0;color:#000;border:2px outset #fff;padding:0 4px;margin-left:3px}
+.path{
+  padding:5px 9px;background:#eee;border-bottom:2px inset #fff;
+  font:12px Verdana,Arial,sans-serif
+}
+.layout{display:grid;grid-template-columns:205px 1fr;gap:9px;padding:9px}
+nav{background:#deded0;border:2px inset #fff;padding:7px;height:max-content;position:sticky;top:4px}
+nav h3{
+  margin:0 0 8px;background:#000080;color:white;padding:5px;
+  font:bold 15px Arial,sans-serif
+}
+nav a{display:block;padding:5px 3px;border-bottom:1px dotted #777;font:12px Verdana,Arial,sans-serif}
+main{min-width:0}
+.hero{
+  background:#f7f7ef;border:3px double #000;padding:18px 20px 13px;
+  position:relative;overflow:hidden
+}
+.hero small{font:12px Verdana,Arial,sans-serif}
+.hero h1{
+  font:900 clamp(52px,9vw,115px)/.8 Impact,Arial Black,sans-serif;
+  margin:12px 0 6px;letter-spacing:-2px;text-shadow:5px 5px #ff0
+}
+.hero .stamp{
+  position:absolute;right:12px;top:18px;
+  border:5px solid #d00;color:#d00;padding:5px 12px;
+  font:900 27px Arial,sans-serif;transform:rotate(-9deg);
+  opacity:.85
+}
+.question{
+  margin-top:11px;background:#fff;border:2px solid #000;
+  box-shadow:3px 3px 0 #777
+}
+.qhead{
+  background:#000;color:#00ff00;padding:5px 9px;
+  font:900 13px Arial,Helvetica,sans-serif
+}
+.qbody{padding:16px 20px}
+.prompt{font:12px Verdana,Arial,sans-serif;color:#555;margin-bottom:10px}
+.answer{font:900 36px Arial Black,Impact,sans-serif;margin:0}
+.sub{font:bold 18px "Comic Sans MS",Arial,sans-serif;max-width:760px}
+.nickname{
+  font:900 clamp(60px,11vw,145px)/1 Impact,Arial Black,sans-serif;
+  color:#000080;text-shadow:5px 5px #ff00aa
+}
+.imaginary{
+  min-height:420px;display:flex;align-items:center;justify-content:center;
+  background:#00ff00;position:relative;overflow:hidden
+}
+.imaginary .i{
+  font:italic 900 clamp(230px,42vw,500px)/.7 "Arial Black",Impact,sans-serif;
+  color:#000;text-shadow:12px 9px #ff0
+}
+.imaginary .why{
+  position:absolute;bottom:18px;left:18px;right:18px;background:#fff;
+  border:3px solid #000;padding:10px;font:bold 20px Arial,sans-serif
+}
+.media{
+  height:390px;background:#111;color:#0f0;border:7px ridge #bbb;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font:900 22px "Arial Black",Arial,sans-serif
+}
+.play{font-size:72px;display:block}
+.winamp{
+  background:#202020;color:#00ff00;border:6px ridge #bbb;padding:10px;
+  font-family:Verdana,Arial,sans-serif
+}
+.winamp .screen{background:#071500;border:2px inset #777;padding:13px;font-size:20px}
+.winamp .buttons{margin-top:8px}
+.winamp button{font:bold 18px Arial;border:3px outset #ddd;background:#c0c0c0;margin-right:5px}
+.photo{
+  min-height:430px;background:#e8e8dd;border:1px solid #333;
+  display:grid;place-items:center;padding:20px;
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.04) 3px 4px)
+}
+.placeholder{
+  width:min(520px,90%);height:310px;background:#999;border:12px solid #fff;
+  outline:2px solid #000;display:grid;place-items:center;
+  font:bold 18px "Comic Sans MS",Arial,sans-serif;text-align:center;
+  transform:rotate(-1deg);box-shadow:8px 9px 0 rgba(0,0,0,.35)
+}
+.evidence .placeholder{transform:rotate(1.3deg)}
+footer{
+  margin-top:14px;background:#000;color:#0f0;text-align:center;
+  padding:8px;font:11px Verdana,Arial,sans-serif
+}
+.blink{animation:blink .75s steps(1) infinite}
+@keyframes blink{50%{visibility:hidden}}
+@media(max-width:760px){
+ .layout{grid-template-columns:1fr}
+ nav{position:static}
+ .hero .stamp{font-size:16px;top:8px}
+}
+</style>
+</head>
+<body>
+<div class="top">FESTUDVALGET.EXE&nbsp;&nbsp; C:\PERSONALE\OLE-001.DAT &nbsp;&nbsp; <span class="blink">● ONLINE</span></div>
+<div class="marquee"><span>★ OLE-001 ★ ORI ★ VISUELT DESIGN ★ FESTUDVALGET ★ OLE-001 ★ ORI ★ VISUELT DESIGN ★</span></div>
+
+<div class="window">
+  <div class="titlebar">FESTUDVALGET ARCHIVE.EXE <span class="controls"><b>_</b><b>□</b><b>×</b></span></div>
+  <div class="path">ARKIV / ANSØGERE / OLE-001.DAT</div>
+  <div class="layout">
+    <nav>
+      <h3>INDEKS</h3>
+      <a href="#ori">01_ORI</a>
+      <a href="#ole">02_OLE😔🤘</a>
+      <a href="#i">03_TALLET_i</a>
+      <a href="#video">04_VIDEO.AVI</a>
+      <a href="#song">05_AUDIO.WAV</a>
+      <a href="#baby">06_BABY.JPG</a>
+      <a href="#drawer">07_SKUFFE.JPG</a>
+    </nav>
+
+    <main>
+      <section class="hero" id="ori">
+        <small>PERSONALEFIL // 001</small>
+        <div class="stamp">ANSØGER</div>
+        <h1>ORI</h1>
+        <p class="answer">VISUELT DESIGN</p>
+      </section>
+
+      <section class="question" id="ole">
+        <div class="qhead">02 // HVAD SKAL DIT KÆLENAVN VÆRE I GRUPPECHATTEN?</div>
+        <div class="qbody"><div class="nickname">OLE😔🤘</div></div>
+      </section>
+
+      <section class="question" id="i">
+        <div class="qhead">03 // HVIS DU SKULLE BESKRIVE DIG SELV SOM ET TAL?</div>
+        <div class="imaginary">
+          <div class="i">i</div>
+          <div class="why">imaginært tal — fordi I slet ikke kan forestille jer hvor varm jeg ville være i det udvalg 🔥🔥🔥🔥🔥🤘🤘🤘🤘🤘🤘</div>
+        </div>
+      </section>
+
+      <section class="question" id="video">
+        <div class="qhead">04 // VIDEOANBEFALING</div>
+        <div class="qbody">
+          <div class="prompt">Få en videoanbefaling af en anden, hvorfor du skal være en del af festudvalget.</div>
+          
+<div class="rec-wrap">
+  <div class="rec-note">ANBEFALINGER // SCROLL SIDEWAYS →</div>
+  <div class="rec-slider" id="recSlider">
+<div class="rec-slide"><div class="rec-no">01</div>
+    <video class="rec-video" playsinline loop preload="metadata" controls>
+      <source src="media_01.mp4" type="video/mp4">
+    </video></div>
+<div class="rec-slide"><div class="rec-no">02</div>
+    <video class="rec-video" playsinline loop preload="metadata" controls>
+      <source src="media_02.mp4" type="video/mp4">
+    </video></div>
+<div class="rec-slide"><div class="rec-no">03</div>
+    <video class="rec-video" playsinline loop preload="metadata" controls>
+      <source src="media_03.mp4" type="video/mp4">
+    </video></div>
+<div class="rec-slide"><div class="rec-no">04</div>
+    <video class="rec-video" playsinline loop preload="metadata" controls>
+      <source src="media_04.mp4" type="video/mp4">
+    </video></div>
+<div class="rec-slide"><div class="rec-no">05</div>
+    <video class="rec-video" playsinline loop preload="metadata" controls>
+      <source src="media_05.mp4" type="video/mp4">
+    </video></div>
+  </div>
+  <div class="sound-warning" id="soundWarning">KLIK ÉN GANG FOR LYD</div>
+</div>
+
+        </div>
+      </section>
+
+      <section class="question" id="song">
+        <div class="qhead">05 // HVILKEN SANG VILLE VÆKKE DIG FRA DE DØDE OG FÅ DIG TILBAGE PÅ FLOOR?</div>
+        <div class="qbody">
+          <div class="winamp" id="supernovaPlayer">
+            <div class="screen">01. SUPERNOVA SUPERSTARS — RONJA<br><span id="songTime">00:00</span> <span id="songBar">░░░░░░░░░░</span></div>
+            <audio id="supernovaAudio" preload="metadata" src="media_01.mp3"></audio>
+            <div class="buttons">
+              <button type="button" id="songBack">◀◀</button>
+              <button type="button" id="songPlay">▶ PLAY</button>
+              <button type="button" id="songStop">■ STOP</button>
+              <button type="button" id="songForward">▶▶</button>
+            </div>
+          </div>
+          <p class="sub">💀💀 SUPERNOVA SUPERSTARS</p>
+        </div>
+      </section>
+
+      <section class="question" id="baby">
+        <div class="qhead">06 // BILLEDE SOM BABY/BARN DER BESKRIVER HVORDAN DU ER I DAG</div>
+        <div class="photo baby-stage">
+  <div class="baby-card">
+    <div class="baby-label">BABY_ORI.JPG</div>
+    <img id="babyOri" class="baby-img" src="media_01.jpg" alt="Ori som barn">
+    <div class="baby-trash">★ ORIGINAL CONTENT ★ 2000s DIGITAL CAMERA ★</div>
+  </div>
+</div>
+      </section>
+
+      <section class="question evidence" id="drawer">
+        <div class="qhead">07 // FAVORITSKUFFE</div>
+        <div class="photo drawer-video">
+  <video id="drawerVideo" autoplay loop muted playsinline preload="auto" controls style="max-height:560px;max-width:100%;border:8px ridge #c0c0c0;background:#000;box-shadow:7px 7px 0 #000">
+    <source src="media_06.mp4" type="video/mp4">
+  </video>
+</div>
+      </section>
+
+      <footer>END OF FILE // OLE-001.DAT</footer>
+    </main>
+  </div>
+</div>
+
+<style>
+.rec-wrap{background:#000;border:7px ridge #c0c0c0;padding:8px;position:relative}
+.rec-note{font:900 15px Arial,sans-serif;color:#00ff00;background:#000;padding:3px 5px}
+.rec-slider{
+  display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:8px 3px 14px;scrollbar-color:#c0c0c0 #000
+}
+.rec-slide{
+  flex:0 0 min(78vw,520px);scroll-snap-align:center;position:relative;
+  background:#000;border:3px outset #ddd
+}
+.rec-video{display:block;width:100%;height:520px;object-fit:contain;background:#000}
+.rec-no{
+  position:absolute;z-index:2;left:7px;top:7px;background:#ff0;color:#000;
+  border:2px solid #000;padding:2px 7px;font:900 22px "Arial Black",Arial,sans-serif
+}
+.sound-warning{
+  position:absolute;z-index:10;right:15px;bottom:22px;background:#ff0;color:#000;
+  border:3px solid #000;padding:7px 10px;font:900 13px Arial,sans-serif;
+  cursor:pointer
+}
+.sound-warning.enabled{display:none}
+@media(max-width:760px){
+  .rec-slide{flex-basis:88vw}
+  .rec-video{height:62vh}
+}
+</style>
+<script>
+(function(){
+  const vids=[...document.querySelectorAll('.rec-video')];
+  const warning=document.getElementById('soundWarning');
+  let soundUnlocked=false;
+  let active=null;
+
+  function stopOthers(v){
+    vids.forEach(x=>{if(x!==v){x.pause(); x.muted=true;}});
+  }
+  async function activate(v){
+    if(!v) return;
+    stopOthers(v);
+    active=v;
+    v.muted=!soundUnlocked;
+    try{ await v.play(); }catch(e){
+      v.muted=true;
+      try{ await v.play(); }catch(_){}
+    }
+  }
+
+  // Browsers forbid unsolicited autoplay with sound. One click unlocks audio;
+  // after that, scrolling between videos automatically switches sound/playback.
+  function unlock(){
+    soundUnlocked=true;
+    if(active){
+      active.muted=false;
+      active.play().catch(()=>{});
+    }
+    warning.classList.add('enabled');
+  }
+  warning.addEventListener('click', unlock);
+  document.addEventListener('pointerdown', function once(){
+    soundUnlocked=true;
+    warning.classList.add('enabled');
+    if(active){active.muted=false;active.play().catch(()=>{});}
+    document.removeEventListener('pointerdown', once);
+  }, {once:true});
+
+  const io=new IntersectionObserver(entries=>{
+    let best=null;
+    for(const e of entries){
+      if(e.isIntersecting && (!best || e.intersectionRatio>best.intersectionRatio)) best=e;
+    }
+    if(best && best.intersectionRatio>=0.55) activate(best.target);
+  }, {threshold:[0.25,0.55,0.75,1]});
+  vids.forEach(v=>io.observe(v));
+})();
+</script>
+
+
+<style>
+.rec-caption{
+  background:#ffff00;color:#000;border-top:3px solid #000;
+  padding:8px 10px 10px;font:900 14px/1.25 Arial,Helvetica,sans-serif;
+  max-height:115px;overflow-y:auto;text-align:left
+}
+.rec-slide{background:#000}
+.rec-video{height:460px}
+.baby-stage{overflow:hidden;background:#00f!important;min-height:520px!important}
+.baby-card{
+  width:min(760px,92%);background:#ff0;border:8px ridge #c0c0c0;
+  padding:7px;box-shadow:14px 14px 0 #ff00aa;transform:rotate(-2deg)
+}
+.baby-img{display:block;width:100%;height:auto;filter:saturate(1.35) contrast(1.08)}
+.baby-label{
+  background:#000;color:#0f0;font:900 18px Arial,sans-serif;
+  padding:5px;text-align:left
+}
+.baby-trash{
+  background:#ff00aa;color:#fff;font:900 18px "Comic Sans MS",Arial,sans-serif;
+  padding:5px;text-align:center
+}
+
+</style>
+<script>
+(function(){
+  const recs=[...document.querySelectorAll('.rec-video')];
+  const drawer=document.getElementById('drawerVideo');
+  const warning=document.getElementById('soundWarning');
+  let unlocked=false;
+  let active=null;
+
+  function silenceAll(except){
+    recs.forEach(v=>{
+      if(v!==except){ v.pause(); v.muted=true; }
+    });
+    if(drawer && drawer!==except){ drawer.pause(); drawer.muted=true; }
+  }
+
+  async function playVisible(v){
+    if(!v || v.dataset.userPaused==="1") return;
+    silenceAll(v);
+    active=v;
+    v.muted=!unlocked;
+    try{ await v.play(); }
+    catch(e){
+      v.muted=true;
+      try{ await v.play(); }catch(_){}
+    }
+  }
+
+  [...recs, drawer].filter(Boolean).forEach(v=>{
+    v.addEventListener('pause', ()=>{
+      if(!v.ended) v.dataset.userPaused="1";
+    });
+    v.addEventListener('play', ()=>{
+      v.dataset.userPaused="0";
+      silenceAll(v);
+      active=v;
+      if(unlocked) v.muted=false;
+    });
+  });
+
+  function unlock(){
+    unlocked=true;
+    if(warning) warning.style.display="none";
+    if(active){ active.muted=false; active.play().catch(()=>{}); }
+  }
+  document.addEventListener('pointerdown', unlock, {once:true});
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && e.intersectionRatio>=0.6) playVisible(e.target);
+      else if(!e.isIntersecting && !e.target.paused) e.target.pause();
+    });
+  },{threshold:[0,.6,1]});
+  recs.forEach(v=>io.observe(v));
+  if(drawer) io.observe(drawer);
+
+  
+})();
+</script>
+
+
+<style>
+.transcript-hidden{display:none!important}
+.rec-slide{position:relative}
+.subtitle-overlay{
+  position:absolute;left:7%;right:7%;bottom:58px;z-index:8;
+  text-align:center;color:#fff;
+  font:900 clamp(17px,2vw,25px)/1.16 Arial,Helvetica,sans-serif;
+  text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;
+  pointer-events:none;
+}
+.subtitle-overlay span{
+  background:rgba(0,0,0,.72);padding:3px 7px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+</style>
+
+
+
+
+<style>
+.baby-stage{
+  position:relative;
+  overflow:hidden!important;
+  background:#0000ff!important;
+}
+.baby-card{
+  transform:none!important;
+  transform-origin:center center;
+  will-change:transform,filter,opacity;
+}
+.baby-card.baby-enter{
+  animation:babyTrashEnter 900ms steps(7,end) both!important;
+}
+@keyframes babyTrashEnter{
+  0%   {opacity:0;transform:translateX(95%) scale(.55) rotate(12deg);filter:saturate(2.5) hue-rotate(120deg)}
+  20%  {opacity:1;transform:translateX(-12%) scale(1.12) rotate(-7deg);filter:saturate(2)}
+  38%  {transform:translateX(8%) scale(.94) rotate(5deg);filter:hue-rotate(220deg)}
+  55%  {transform:translateX(-5%) scale(1.06) rotate(-3deg)}
+  72%  {transform:translateX(3%) scale(.98) rotate(2deg)}
+  86%  {transform:translateX(-1%) scale(1.02) rotate(-1deg)}
+  100% {opacity:1;transform:translateX(0) scale(1) rotate(0);filter:none}
+}
+.baby-stage::after{
+  content:"★ BABY_ORI.JPG ★";
+  position:absolute;z-index:20;left:0;top:12%;
+  background:#ff0;color:#f0f;border:3px solid #000;
+  padding:4px 12px;font:900 22px "Comic Sans MS",Arial,sans-serif;
+  transform:rotate(-5deg);
+  opacity:0;
+}
+.baby-stage.baby-flash::after{
+  animation:babyLabel 900ms steps(2,end) both;
+}
+@keyframes babyLabel{
+  0%,20%,45%,70%{opacity:1;left:3%}
+  10%,35%,60%{opacity:0}
+  100%{opacity:0;left:55%}
+}
+</style>
+
+<script>
+(function(){
+  const card=document.querySelector(".baby-card");
+  const stage=document.querySelector(".baby-stage");
+  if(!card || !stage) return;
+
+  let played=false;
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      if(entry.isIntersecting && entry.intersectionRatio>=0.35 && !played){
+        played=true;
+        card.classList.remove("baby-enter");
+        stage.classList.remove("baby-flash");
+        void card.offsetWidth;
+        card.classList.add("baby-enter");
+        stage.classList.add("baby-flash");
+      }
+      if(!entry.isIntersecting){
+        played=false;
+        card.classList.remove("baby-enter");
+        stage.classList.remove("baby-flash");
+      }
+    });
+  },{threshold:[0,.35,.7]});
+  observer.observe(stage);
+})();
+</script>
+
+
+<style>
+/* Deliberately terrible typography: late-90s/early-00s font crime scene. */
+body{font-family:"Comic Sans MS","Comic Sans",cursive!important}
+.hero h1{font-family:fantasy!important;font-weight:900!important}
+.answer{font-family:"Brush Script MT","Comic Sans MS",cursive!important}
+.nickname{font-family:"Comic Sans MS",Chalkboard,cursive!important}
+.imaginary .i{font-family:fantasy!important}
+.imaginary .why{font-family:"Comic Sans MS",cursive!important}
+.titlebar,.qhead{font-family:"Arial Black",Impact,sans-serif!important}
+.top,.path{font-family:"Courier New",Courier,monospace!important}
+nav,nav a{font-family:"Trebuchet MS","Comic Sans MS",sans-serif!important}
+.marquee{font-family:Impact,"Arial Black",sans-serif!important}
+.prompt{font-family:"Times New Roman",Times,serif!important;font-style:italic}
+.sub{font-family:"Comic Sans MS",fantasy!important}
+.winamp,.winamp .screen{font-family:"Courier New",monospace!important}
+.baby-label{font-family:Impact,"Arial Black",sans-serif!important}
+.baby-trash{font-family:"Comic Sans MS",cursive!important}
+.subtitle-overlay{
+  font-family:"Comic Sans MS",Arial,sans-serif!important;
+  font-weight:900!important;
+}
+.question:nth-of-type(odd) .qhead{font-family:"Comic Sans MS",fantasy!important}
+.question:nth-of-type(even) .qhead{font-family:"Arial Black",Impact,sans-serif!important}
+</style>
+
+
+
+
+<style>
+/* TYPOGRAFI-RETTELSE */
+body, p, div, span, a, small, button {
+  font-family:"Comic Sans MS","Comic Sans",cursive;
+}
+
+/* Alle overskrifter */
+h1,h2,h3,h4,h5,h6,
+.qhead,.titlebar,.rec-note {
+  font-family:"Comic Sans MS","Comic Sans",cursive!important;
+}
+
+/* Navnet ORI + kælenavnet OLE skal være Impact */
+.hero h1,
+.nickname,
+.answer.nickname {
+  font-family:Impact,"Arial Black",sans-serif!important;
+  font-style:normal!important;
+}
+
+/* Behold lidt af det øvrige typografiske kaos, bare uden Comic Sans */
+.top,.path,.winamp,.winamp .screen {
+  font-family:"Courier New",Courier,monospace!important;
+}
+.marquee {
+  font-family:Impact,"Arial Black",sans-serif!important;
+}
+.prompt {
+  font-family:"Comic Sans MS","Comic Sans",cursive!important;
+  font-style:normal!important;
+}
+.imaginary .i {
+  font-family:Impact,"Arial Black",sans-serif!important;
+}
+.subtitle-overlay {
+  font-family:"Comic Sans MS","Comic Sans",cursive!important;
+}
+</style>
+
+
+<style>
+html,body,
+div,span,p,a,small,strong,b,i,em,
+nav,section,article,header,footer,
+button,input,label,
+.top,.path,.marquee,.titlebar,.qhead,.prompt,.sub,
+.answer,.rec-note,.rec-no,.winamp,.screen,
+.baby-label,.baby-trash,.sound-warning,
+.imaginary,.imaginary .why {
+  font-family:"Comic Sans MS","Comic Sans",cursive!important;
+}
+
+/* User's explicit exceptions */
+.hero h1,
+.nickname,
+.answer.nickname {
+  font-family:Impact,"Arial Black",sans-serif!important;
+}
+
+/* The giant imaginary-number i remains Impact from the earlier instruction */
+.imaginary .i {
+  font-family:Impact,"Arial Black",sans-serif!important;
+}
+</style>
+
+
+<script>
+(function(){
+  const a=document.getElementById("supernovaAudio");
+  const play=document.getElementById("songPlay");
+  const stop=document.getElementById("songStop");
+  const back=document.getElementById("songBack");
+  const forward=document.getElementById("songForward");
+  const time=document.getElementById("songTime");
+  const bar=document.getElementById("songBar");
+  if(!a) return;
+
+  function fmt(s){
+    if(!Number.isFinite(s)) return "00:00";
+    const m=Math.floor(s/60), sec=Math.floor(s%60);
+    return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  }
+  function update(){
+    time.textContent=fmt(a.currentTime);
+    const p=a.duration ? Math.min(1,a.currentTime/a.duration) : 0;
+    const n=Math.round(p*10);
+    bar.textContent="█".repeat(n)+"░".repeat(10-n);
+  }
+  play.addEventListener("click",()=>{
+    if(a.paused){ a.play(); play.textContent="❚❚ PAUSE"; }
+    else { a.pause(); play.textContent="▶ PLAY"; }
+  });
+  stop.addEventListener("click",()=>{a.pause();a.currentTime=0;play.textContent="▶ PLAY";update();});
+  back.addEventListener("click",()=>{a.currentTime=Math.max(0,a.currentTime-10);update();});
+  forward.addEventListener("click",()=>{a.currentTime=Math.min(a.duration||Infinity,a.currentTime+10);update();});
+  a.addEventListener("timeupdate",update);
+  a.addEventListener("ended",()=>{play.textContent="▶ PLAY";update();});
+  update();
+})();
+</script>
+
+
+<style id="COMIC-SANS-OVERRIDE">
+*,
+*::before,
+*::after {
+  font-family:"Comic Sans MS","Comic Sans",cursive !important;
+}
+
+/* ONLY these two display answers stay Impact */
+.hero h1,
+.nickname,
+.answer.nickname {
+  font-family:Impact,"Arial Black",sans-serif !important;
+}
+
+/* Force the exact screenshot areas to Comic Sans */
+.titlebar,
+.path,
+nav,
+nav *,
+.qhead,
+.hero .prompt,
+.hero .sub,
+.hero h2,
+.question,
+.question *,
+.marquee,
+.top,
+.winamp,
+.winamp *,
+button {
+  font-family:"Comic Sans MS","Comic Sans",cursive !important;
+}
+
+/* Re-assert ORI/OLE after the broad question rule */
+.hero h1,
+.nickname,
+.answer.nickname {
+  font-family:Impact,"Arial Black",sans-serif !important;
+}
+</style>
+
+
+<style>
+/* Overskrifter danser KUN mens Supernova spiller */
+.music-dancing {
+  transform-origin:center;
+  will-change:transform;
+  animation:headerDance .48s steps(4,end) infinite;
+}
+.music-dancing:nth-of-type(2n) { animation-duration:.37s; }
+.music-dancing:nth-of-type(3n) { animation-duration:.61s; }
+
+@keyframes headerDance {
+  0%   {transform:translate(0,0) rotate(0deg) scale(1)}
+  20%  {transform:translate(-5px,-3px) rotate(-2deg) scale(1.02)}
+  40%  {transform:translate(4px,2px) rotate(2deg) scale(.99)}
+  60%  {transform:translate(-2px,4px) rotate(1deg) scale(1.03)}
+  80%  {transform:translate(5px,-2px) rotate(-1deg) scale(1.01)}
+  100% {transform:translate(0,0) rotate(0deg) scale(1)}
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-dancing { animation:none!important; }
+}
+</style>
+
+<script>
+(function(){
+  const audio=document.getElementById("supernovaAudio");
+  if(!audio) return;
+
+  const headings=[
+    ...document.querySelectorAll(
+      "h1,h2,h3,h4,h5,h6,.qhead,.titlebar,.rec-note"
+    )
+  ];
+
+  function startDance(){
+    headings.forEach(el=>el.classList.add("music-dancing"));
+  }
+  function stopDance(){
+    headings.forEach(el=>el.classList.remove("music-dancing"));
+  }
+
+  audio.addEventListener("play",startDance);
+  audio.addEventListener("playing",startDance);
+  audio.addEventListener("pause",stopDance);
+  audio.addEventListener("ended",stopDance);
+})();
+</script>
+
+
+
+<style>
+#discoFxLayer{position:fixed;inset:0;z-index:99990;pointer-events:none;overflow:hidden;display:none;
+background:linear-gradient(135deg,#09000f,#001017,#130500);animation:clubGradient 2s steps(8,end) infinite}
+#discoFxLayer.on{display:block}
+@keyframes clubGradient{0%{background-color:#160018;filter:hue-rotate(0deg)}25%{background-color:#001b24;filter:hue-rotate(75deg)}50%{background-color:#210900;filter:hue-rotate(155deg)}75%{background-color:#071b00;filter:hue-rotate(250deg)}100%{background-color:#160018;filter:hue-rotate(360deg)}}
+.spotlight{position:absolute;top:-10%;width:38vw;height:120%;opacity:.5;filter:blur(6px);clip-path:polygon(49% 0,51% 0,100% 100%,0 100%);transform-origin:50% 0;mix-blend-mode:screen}
+.spotlight.a{left:-8%;background:linear-gradient(#ff00cc,rgba(255,0,204,.5),transparent);animation:spotA 1.7s ease-in-out infinite alternate}
+.spotlight.b{left:32%;background:linear-gradient(#00eaff,rgba(0,234,255,.5),transparent);animation:spotB 2.1s ease-in-out infinite alternate}
+.spotlight.c{right:-8%;background:linear-gradient(#fff200,rgba(255,242,0,.45),transparent);animation:spotC 1.55s ease-in-out infinite alternate}
+@keyframes spotA{from{transform:rotate(-25deg)}to{transform:rotate(24deg)}}@keyframes spotB{from{transform:rotate(20deg)}to{transform:rotate(-20deg)}}@keyframes spotC{from{transform:rotate(27deg)}to{transform:rotate(-29deg)}}
+.confetti-bit{position:fixed;z-index:99999;top:-30px;pointer-events:none;width:9px;height:17px;border:1px solid #000;animation:confettiFall var(--fall) linear forwards}
+@keyframes confettiFall{0%{transform:translate3d(0,-30px,0) rotate(0)}45%{transform:translate3d(var(--drift1),48vh,0) rotate(390deg)}100%{transform:translate3d(var(--drift2),110vh,0) rotate(920deg)}}
+#playExplosion{position:fixed;left:50%;top:45%;z-index:100000;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.2);font-family:"Comic Sans MS",cursive!important;font-size:clamp(42px,9vw,130px);font-weight:900;color:#ff0;-webkit-text-stroke:3px #f0c;text-shadow:8px 8px 0 #0ff,12px 12px 0 #000}
+#playExplosion.boom{animation:playBoom .9s steps(6,end)}
+@keyframes playBoom{0%{opacity:1;transform:translate(-50%,-50%) scale(.15) rotate(-18deg)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(8deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5) rotate(12deg)}}
+</style>
+<div id="discoFxLayer"><div class="spotlight a"></div><div class="spotlight b"></div><div class="spotlight c"></div></div>
+<div id="playExplosion">DISCO!!!</div>
+<script>
+(function(){
+ const audio=document.getElementById("supernovaAudio"),play=document.getElementById("songPlay"),layer=document.getElementById("discoFxLayer"),boom=document.getElementById("playExplosion");
+ if(!audio||!play||!layer||!boom)return;
+ const colors=["#ff00cc","#00ffff","#ffff00","#00ff00","#ff3300","#6633ff","#fff"];let timer=null;
+ function burst(n){for(let i=0;i<n;i++){const b=document.createElement("i");b.className="confetti-bit";b.style.left=Math.random()*100+"vw";b.style.background=colors[Math.floor(Math.random()*colors.length)];b.style.setProperty("--fall",(2+Math.random()*2.7)+"s");b.style.setProperty("--drift1",(-110+Math.random()*220)+"px");b.style.setProperty("--drift2",(-180+Math.random()*360)+"px");document.body.appendChild(b);setTimeout(()=>b.remove(),5200)}}
+ function start(){layer.classList.add("on");if(!timer){burst(60);timer=setInterval(()=>burst(14),420)}}
+ function stop(){layer.classList.remove("on");if(timer){clearInterval(timer);timer=null}}
+ play.addEventListener("click",()=>{if(audio.paused){boom.classList.remove("boom");void boom.offsetWidth;boom.classList.add("boom")}},true);
+ audio.addEventListener("play",start);audio.addEventListener("playing",start);audio.addEventListener("pause",stop);audio.addEventListener("ended",stop);
+})();
+</script>
+
+<style>*{font-family:"Comic Sans MS","Comic Sans",cursive!important}.hero h1,.nickname,.answer.nickname{font-family:Impact,"Arial Black",sans-serif!important}</style>
+
+<style id="DISCO-BACKGROUND-FIX">
+/* Effekten ligger bag indholdet. Siden forbliver læsbar og scrollbar. */
+#discoFxLayer{
+  z-index:0!important;
+  opacity:.48!important;
+  pointer-events:none!important;
+}
+body{
+  position:relative!important;
+  isolation:isolate!important;
+}
+body > *:not(#discoFxLayer):not(.confetti-bit):not(#playExplosion){
+  position:relative;
+  z-index:2;
+}
+.confetti-bit{z-index:50!important;opacity:.75!important;pointer-events:none!important}
+#playExplosion{z-index:60!important;pointer-events:none!important}
+
+/* Gør selve sidefladerne lidt transparente, så disco kan ses bagved uden at drukne teksten. */
+.window,.content,.question,.hero{
+  position:relative;
+}
+body.party-on .window,
+body.party-on .content{
+  background-color:rgba(192,192,192,.86)!important;
+}
+body.party-on .question{
+  opacity:.96;
+}
+
+/* Musikstyring bliver hængende i nederste højre hjørne mens sangen spiller. */
+#supernovaPlayer.party-controls{
+  position:fixed!important;
+  right:14px!important;
+  bottom:14px!important;
+  z-index:200!important;
+  width:min(390px,calc(100vw - 28px))!important;
+  max-height:170px!important;
+  margin:0!important;
+  box-shadow:8px 8px 0 #000!important;
+}
+</style>
+<script>
+(function(){
+ const a=document.getElementById("supernovaAudio");
+ const player=document.getElementById("supernovaPlayer");
+ if(!a||!player)return;
+ function on(){document.body.classList.add("party-on");player.classList.add("party-controls")}
+ function off(){document.body.classList.remove("party-on");player.classList.remove("party-controls")}
+ a.addEventListener("play",on);
+ a.addEventListener("playing",on);
+ a.addEventListener("pause",off);
+ a.addEventListener("ended",off);
+})();
+</script>
+
+<style id="RETRO-AD-HELL">
+.retro-ad-rail{position:fixed;top:65px;bottom:8px;width:140px;z-index:120;display:flex;flex-direction:column;gap:7px;overflow:hidden;pointer-events:none}.retro-ad-rail.left{left:4px}.retro-ad-rail.right{right:4px}.retro-ad{pointer-events:auto;border:3px outset #eee;background:#ff0;color:#000;padding:5px;text-align:center;font:12px/1.05 "Comic Sans MS",cursive!important;box-shadow:3px 3px #000}.retro-ad b{display:block;font-size:16px}.retro-ad a{color:#00e;text-decoration:underline;font-weight:bold}.blink{animation:adBlink .55s steps(2,end) infinite}.wiggle{animation:adWiggle 1.1s steps(3,end) infinite}.dark{background:#000;color:#0f0!important}.red{background:#f00;color:#fff!important}.cyan{background:#0ff}.pink{background:#f0c;color:#fff!important}.lime{background:#7cff00}.orange{background:#ff7b00;color:#000}@keyframes adBlink{50%{filter:invert(1)}}@keyframes adWiggle{50%{transform:rotate(2deg) scale(1.03)}100%{transform:rotate(-2deg)}}
+.retro-popup{position:fixed;z-index:300;width:260px;border:3px outset #ddd;background:#c0c0c0;box-shadow:8px 8px rgba(0,0,0,.65);font-family:"Comic Sans MS",cursive!important}.popbar{display:flex;justify-content:space-between;align-items:center;background:#000080;color:#fff;padding:3px 4px;font:bold 12px "Comic Sans MS",cursive!important}.popclose{border:2px outset #fff;background:#c0c0c0;color:#000;width:22px;height:20px;cursor:pointer}.popbody{padding:10px;text-align:center;background:#ff0;color:#000}.popbody strong{display:block;font-size:23px;line-height:.95}.fakebtn{display:inline-block;margin-top:8px;padding:5px 10px;border:3px outset #fff;background:#c0c0c0;color:#00e;text-decoration:underline;cursor:pointer}#popAd1{left:6%;top:17%}#popAd2{right:7%;top:47%}#popAd3{left:35%;top:8%}.popup-hidden{display:none!important}@media(max-width:1180px){.retro-ad-rail{display:none}}@media(max-width:720px){.retro-popup{width:210px;transform:scale(.82)}#popAd1{left:3px;top:110px}#popAd2{right:3px;top:53%}#popAd3{left:18%;top:5%}}@media(prefers-reduced-motion:reduce){.retro-ad{animation:none!important}}
+</style>
+<aside class="retro-ad-rail left">
+<div class="retro-ad blink red"><b>🔥 HOT SINGLES 🔥</b>I DIT OMRÅDE<br>VENTER PÅ DIG<br><a href="https://www.bt.dk/" target="_blank" rel="noopener">KLIK NU!!!</a></div>
+<div class="retro-ad dark wiggle"><b>DOWNLOAD RAM</b>DIN COMPUTER ER<br>ALT FOR LANGSOM<br><a href="https://www.tv2.dk/" target="_blank" rel="noopener">+512 MB GRATIS</a></div>
+<div class="retro-ad cyan"><b>FLY TIL MALLORCA</b>FRA 79 KR.*<br>BAGAGE: NEJ<br>BENPLADS: HELLER IKKE<br><a href="https://www.ekstrabladet.dk/" target="_blank" rel="noopener">BESTIL NU</a></div>
+<div class="retro-ad pink blink"><b>★ DU HAR VUNDET ★</b>1 STK. TELEFON<br>VÆRDI: MÅSKE 9.999,-<br><a href="https://www.bt.dk/" target="_blank" rel="noopener">HENT GEVINST</a></div>
+<div class="retro-ad lime"><b>DENNE GRØNTSAG</b>CHOKER LÆGER<br>I HELE DANMARK<br><a href="https://www.tv2.dk/" target="_blank" rel="noopener">SE HVILKEN »</a></div>
+<div class="retro-ad orange wiggle"><b>LÅN 50.000,-</b>PÅ 4 MINUTTER!!!<br><small>økonomisk dømmekraft ikke inkluderet</small></div>
+</aside>
+<aside class="retro-ad-rail right">
+<div class="retro-ad wiggle"><b>🎰 JACKPOT 🎰</b>8.734.221 KR.<br>VENTER MÅSKE PÅ DIG<br><a href="https://www.ekstrabladet.dk/" target="_blank" rel="noopener">SPIN!!!</a></div>
+<div class="retro-ad red blink"><b>BREAKING!</b>DU HAR 17 VIRUS<br>PÅ DIN MAC!!!<br><a href="https://www.bt.dk/" target="_blank" rel="noopener">FJERN DEM NU</a></div>
+<div class="retro-ad dark"><b>NOKIA 3310</b>BATTERI: 19 ÅR<br>SNAKE: JA<br>KAMERA: HVORFOR?</div>
+<div class="retro-ad cyan wiggle"><b>90% RABAT</b>KUN<br><span id="fakeCountdown">04:32</span><br>TILBAGE!!!<br><a href="https://www.tv2.dk/" target="_blank" rel="noopener">SHOP SHOP SHOP</a></div>
+<div class="retro-ad pink"><b>DIN NABO</b>TJENER 74.382 KR.<br>HJEMMEFRA<br><a href="https://www.ekstrabladet.dk/" target="_blank" rel="noopener">SE HENDES TRICK</a></div>
+<div class="retro-ad lime blink"><b>GRATIS RINGETONE</b>CRAZY FROG<br>POLYPHONIC!!!<br><small>send BIP til 1234*</small></div>
+</aside>
+<div class="retro-popup" id="popAd1"><div class="popbar"><span>WINNER!!! - Internet Explorer</span><button class="popclose">X</button></div><div class="popbody"><strong>DU ER BESØGENDE<br>#1.000.000</strong><br>Din præmie udløber om 60 sekunder.<br><a class="fakebtn" href="https://www.ekstrabladet.dk/" target="_blank" rel="noopener">HENT PRÆMIE NU</a></div></div>
+<div class="retro-popup" id="popAd2"><div class="popbar"><span>VIRUS_WARNING_URGENT.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#f00;color:#fff"><strong>⚠ 17 VIRUS FUNDET ⚠</strong><br>Din harddisk kan eksplodere.<br><a class="fakebtn" href="https://www.bt.dk/" target="_blank" rel="noopener">RENS COMPUTER</a></div></div>
+<div class="retro-popup" id="popAd3"><div class="popbar"><span>dating_offer_final_FINAL2.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff66cc"><strong>SINGLER<br>300 M FRA DIG</strong><br>De er uforklarligt interesserede.<br><a class="fakebtn" href="https://www.tv2.dk/" target="_blank" rel="noopener">SE PROFILER</a></div></div>
+<script>(function(){document.querySelectorAll('.retro-popup .popclose').forEach(b=>b.onclick=()=>b.closest('.retro-popup').classList.add('popup-hidden'));document.querySelectorAll('.retro-popup .fakebtn').forEach(b=>b.addEventListener('click',()=>b.closest('.retro-popup').classList.add('popup-hidden')));setInterval(()=>{const h=[...document.querySelectorAll('.retro-popup.popup-hidden')];if(h.length)h[Math.floor(Math.random()*h.length)].classList.remove('popup-hidden')},14000);let t=272;setInterval(()=>{t=t<=0?272:t-1;let m=String(Math.floor(t/60)).padStart(2,'0'),q=String(t%60).padStart(2,'0'),e=document.getElementById('fakeCountdown');if(e)e.textContent=m+':'+q},1000)})();</script>
+
+
+<style id="V6-LAYOUT-HARD-FIX">
+/* ADS: viewport-fixed rails. They never become part of document flow. */
+.retro-ad-rail{
+  position:fixed!important;
+  top:72px!important;
+  bottom:auto!important;
+  height:calc(100vh - 84px)!important;
+  overflow:hidden!important;
+  z-index:2147483000!important;
+  margin:0!important;
+  transform:none!important;
+  contain:layout paint!important;
+}
+.retro-ad-rail.left{left:6px!important;right:auto!important}
+.retro-ad-rail.right{right:6px!important;left:auto!important}
+
+/* Popups are also viewport fixed, never dragged down by page flow. */
+.retro-popup{
+  position:fixed!important;
+  z-index:2147483100!important;
+}
+
+/* Critical: don't let generic "body > *" rules turn fixed UI into relative UI. */
+body > .retro-ad-rail,
+body > .retro-popup,
+body > #discoFxLayer,
+body > #playExplosion{
+  position:fixed!important;
+}
+
+/* PLAYER: once audio is playing, pin it above literally every decorative asset. */
+#supernovaPlayer.party-controls,
+body.party-on #supernovaPlayer{
+  position:fixed!important;
+  right:18px!important;
+  bottom:18px!important;
+  left:auto!important;
+  top:auto!important;
+  z-index:2147483646!important;
+  width:min(410px,calc(100vw - 36px))!important;
+  max-width:410px!important;
+  margin:0!important;
+  transform:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  isolation:isolate!important;
+  box-shadow:8px 8px 0 #000!important;
+}
+
+/* Nothing decorative is allowed above the music controls. */
+#discoFxLayer{z-index:1!important;pointer-events:none!important}
+.confetti-bit{z-index:2147482000!important;pointer-events:none!important}
+#playExplosion{z-index:2147482200!important;pointer-events:none!important}
+
+/* Keep actual page above disco background but below player/ads. */
+body > *:not(#discoFxLayer):not(.confetti-bit):not(#playExplosion):not(.retro-ad-rail):not(.retro-popup){
+  z-index:10;
+}
+
+/* On narrower screens ads disappear instead of wrecking the content. */
+@media(max-width:1180px){
+  .retro-ad-rail{display:none!important}
+}
+@media(max-width:600px){
+  body.party-on #supernovaPlayer,
+  #supernovaPlayer.party-controls{
+    right:8px!important;
+    bottom:8px!important;
+    width:calc(100vw - 16px)!important;
+  }
+}
+</style>
+
+<script id="V6-PLAYER-PIN-FIX">
+(function(){
+  const audio=document.getElementById("supernovaAudio");
+  const player=document.getElementById("supernovaPlayer");
+  if(!audio||!player)return;
+
+  function pin(){
+    document.body.classList.add("party-on");
+    player.classList.add("party-controls");
+  }
+  function unpin(){
+    document.body.classList.remove("party-on");
+    player.classList.remove("party-controls");
+  }
+
+  audio.addEventListener("play",pin);
+  audio.addEventListener("playing",pin);
+  audio.addEventListener("pause",unpin);
+  audio.addEventListener("ended",unpin);
+
+  /* Protect against older scripts/classes fighting the player state. */
+  setInterval(()=>{
+    if(!audio.paused && !audio.ended) pin();
+  },500);
+})();
+</script>
+
+
+<style id="V7-MORE-POPUPS">
+#popAd4{left:18%;top:62%}#popAd5{right:20%;top:12%}#popAd6{left:44%;top:70%}#popAd7{right:3%;top:28%}#popAd8{left:2%;top:38%}
+</style>
+<div class="retro-popup popup-hidden" id="popAd4"><div class="popbar"><span>CHEAP_FLIGHTS_NOW!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ffff"><strong>MALLORCA<br>79 KR.</strong><br>Kun én vej. Resten er dit problem.<br><span class="fakebtn">BOOK NU!!!</span></div></div>
+<div class="retro-popup popup-hidden" id="popAd5"><div class="popbar"><span>RAM_DOWNLOADER_2001.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#00ff00"><strong>DOWNLOAD<br>MORE RAM</strong><br>+512 MB GRATIS!!!<br><span class="fakebtn">INSTALLÉR</span></div></div>
+<div class="retro-popup popup-hidden" id="popAd6"><div class="popbar"><span>CASINO_JACKPOT_FINAL.exe</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff0"><strong>€ 9.999.999<br>JACKPOT</strong><br>DU ER NÆSTEN VINDER!!!<br><span class="fakebtn">SPIN!!!</span></div></div>
+<div class="retro-popup popup-hidden" id="popAd7"><div class="popbar"><span>DOCTORS_HATE_THIS_TRICK.html</span><button class="popclose">X</button></div><div class="popbody" style="background:#ff66cc"><strong>LÆGER HADER<br>DENNE GRØNTSAG</strong><br>Nr. 4 vil chokere dig.<br><span class="fakebtn">SE LISTEN</span></div></div>
+<div class="retro-popup popup-hidden" id="popAd8"><div class="popbar"><span>FREE_RINGTONE!!!</span><button class="popclose">X</button></div><div class="popbody" style="background:#000;color:#0f0"><strong>CRAZY FROG<br>GRATIS*</strong><br><small>*abonnement 199 kr./uge for evigt</small><br><span class="fakebtn">JA TAK</span></div></div>
+<script id="V7-POPUP-SPAM">
+(function(){
+ const pops=[...document.querySelectorAll('.retro-popup')];
+ function wire(p){
+   const x=p.querySelector('.popclose'); if(x)x.onclick=()=>p.classList.add('popup-hidden');
+   p.querySelectorAll('.fakebtn').forEach(b=>b.onclick=()=>p.classList.add('popup-hidden'));
+ }
+ pops.forEach(wire);
+ function summon(){
+   const hidden=pops.filter(p=>p.classList.contains('popup-hidden'));
+   if(!hidden.length)return;
+   const p=hidden[Math.floor(Math.random()*hidden.length)];
+   p.style.left=(3+Math.random()*65)+'vw'; p.style.top=(5+Math.random()*65)+'vh'; p.style.right='auto';
+   p.classList.remove('popup-hidden');
+ }
+ setInterval(summon,6500);
+ setTimeout(summon,2500); setTimeout(summon,5200);
+})();
+</script>
+
+
+<style id="V8-PLAYER-REAL-FIX">
+#supernovaPlayer.player-ported{
+  position:fixed!important;
+  right:16px!important;
+  bottom:16px!important;
+  left:auto!important;
+  top:auto!important;
+  z-index:2147483647!important;
+  width:min(420px,calc(100vw - 32px))!important;
+  max-width:420px!important;
+  margin:0!important;
+  transform:none!important;
+  animation:none!important;
+  filter:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  isolation:isolate!important;
+  box-shadow:9px 9px 0 #000!important;
+}
+#playerParkingSpot{min-height:1px}
+@media(max-width:600px){
+  #supernovaPlayer.player-ported{right:7px!important;bottom:7px!important;width:calc(100vw - 14px)!important}
+}
+</style>
+<script id="V8-PLAYER-PORTAL">
+(function(){
+  const audio=document.getElementById("supernovaAudio");
+  const player=document.getElementById("supernovaPlayer");
+  if(!audio||!player)return;
+
+  const marker=document.createElement("div");
+  marker.id="playerParkingSpot";
+  player.parentNode.insertBefore(marker,player);
+
+  function port(){
+    if(player.parentNode!==document.body) document.body.appendChild(player);
+    player.classList.add("player-ported","party-controls");
+    document.body.classList.add("party-on");
+  }
+  function restore(){
+    player.classList.remove("player-ported","party-controls");
+    document.body.classList.remove("party-on");
+    if(marker.parentNode) marker.parentNode.insertBefore(player,marker.nextSibling);
+  }
+
+  audio.addEventListener("play",port);
+  audio.addEventListener("playing",port);
+  audio.addEventListener("pause",restore);
+  audio.addEventListener("ended",restore);
+
+  setInterval(()=>{
+    if(!audio.paused && !audio.ended) port();
+  },300);
+})();
+</script>
+
+<style id="V8-GIF-JUNK">
+.gif-ad{background:#000!important;padding:4px!important}
+.gif-ad img{display:block;max-width:100%;height:auto;margin:auto;image-rendering:auto}
+.oldweb-floater{position:absolute;z-index:18;pointer-events:none}
+.oldweb-floater img{max-width:120px;image-rendering:auto}
+.gf1{left:2%;top:760px;transform:rotate(-8deg)}
+.gf2{right:3%;top:1420px;transform:rotate(7deg)}
+.gf3{left:4%;top:2200px}
+.gf4{right:4%;top:2920px;transform:rotate(-5deg)}
+.gf5{left:3%;top:3650px;transform:rotate(6deg)}
+@media(max-width:1180px){.oldweb-floater{display:none}}
+</style>
+
+<div class="oldweb-floater gf1"><img src="gif_under_construction.gif" alt="Under construction"></div>
+<div class="oldweb-floater gf2"><img src="gif_email.gif" alt="Spinning email"></div>
+<div class="oldweb-floater gf3"><img src="gif_new.gif" alt="New"></div>
+<div class="oldweb-floater gf4"><img src="gif_skull.gif" alt="Retro skull"></div>
+<div class="oldweb-floater gf5"><img src="gif_hot.gif" alt="Hot"></div>
+
+<script id="V8-MIX-GIFS-INTO-ADS">
+(function(){
+ const left=document.querySelector(".retro-ad-rail.left");
+ const right=document.querySelector(".retro-ad-rail.right");
+ const items=[
+   ["gif_under_construction.gif","UNDER CONSTRUCTION"],
+   ["gif_email.gif","E-MAIL ME!!!"],
+   ["gif_new.gif","NEW!!!"],
+   ["gif_skull.gif","COOL SITE"],
+   ["gif_hot.gif","HOT!!!"]
+ ];
+ [left,right].forEach((rail,ri)=>{
+   if(!rail)return;
+   items.forEach((it,i)=>{
+     if((i+ri)%2===0){
+       const box=document.createElement("div");
+       box.className="retro-ad gif-ad";
+       box.innerHTML='<img src="'+it[0]+'" alt="'+it[1]+'">';
+       const kids=[...rail.children];
+       const at=Math.min(kids.length,1+i);
+       if(kids[at]) rail.insertBefore(box,kids[at]); else rail.appendChild(box);
+     }
+   });
+ });
+})();
+</script>
+
+
+<style id="V9-ADS-FONTS-DISCO">
+/* Reklamerne får bevidst forskellige typografiske personligheder. */
+.retro-ad:nth-child(6n+1), .retro-popup:nth-of-type(3n+1) .popbody{
+  font-family:Impact,"Arial Black",sans-serif!important;
+}
+.retro-ad:nth-child(6n+2), .retro-popup:nth-of-type(3n+2) .popbody{
+  font-family:"Times New Roman",Times,serif!important;
+}
+.retro-ad:nth-child(6n+3){
+  font-family:"Courier New",Courier,monospace!important;
+}
+.retro-ad:nth-child(6n+4){
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-weight:900!important;
+}
+.retro-ad:nth-child(6n+5){
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-style:italic!important;
+}
+.retro-ad:nth-child(6n){
+  font-family:"Arial Narrow",Arial,sans-serif!important;
+  letter-spacing:-1px!important;
+}
+.retro-ad *, .retro-popup .popbody *, .retro-popup .popbar{
+  font-family:inherit!important;
+}
+
+/* Når musikken spiller dæmpes selve siden, mens disco-lysene stadig står tydeligt frem. */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:35;
+  pointer-events:none;
+  background:rgba(0,0,0,0);
+  transition:background .45s ease;
+}
+body.party-on::after{
+  background:rgba(0,0,0,.32);
+}
+/* Discoen skal være synlig oven på dæmpningen men stadig under indhold/player. */
+body.party-on #discoFxLayer{
+  opacity:.72!important;
+  z-index:36!important;
+  mix-blend-mode:screen!important;
+}
+/* Indholdet ligger over mørklægningen, men får lidt mindre lysstyrke for klubkontrast. */
+body.party-on > *:not(#discoFxLayer):not(.confetti-bit):not(#playExplosion):not(.retro-ad-rail):not(.retro-popup):not(#supernovaPlayer){
+  filter:brightness(.82);
+}
+body.party-on #supernovaPlayer,
+body.party-on .retro-ad-rail,
+body.party-on .retro-popup{
+  filter:none!important;
+}
+
+/* GIFs fra The Prompt-artiklen. */
+.prompt-gif{
+  position:absolute;
+  z-index:22;
+  width:135px;
+  border:4px ridge #ff0;
+  background:#000;
+  padding:3px;
+  box-shadow:5px 5px 0 #000;
+  pointer-events:none;
+}
+.prompt-gif img{display:block;width:100%;height:auto}
+.pg1{left:1.5%;top:1050px;transform:rotate(-6deg)}
+.pg2{right:1.5%;top:1780px;transform:rotate(5deg)}
+.pg3{left:2%;top:2550px;transform:rotate(3deg)}
+.pg4{right:2%;top:3320px;transform:rotate(-7deg)}
+.pg5{left:2%;top:4100px;transform:rotate(6deg)}
+@media(max-width:1180px){.prompt-gif{display:none}}
+</style>
+
+<!-- GIFs hotlinkes til de konkrete Giphy-filer, som The Prompt-artiklen bruger. -->
+
+<style id="V10-GIF-AD-SWAP">
+/* No more floating article GIFs down the document. */
+.prompt-gif{display:none!important}
+
+/* GIF wall occupies exactly the same fixed side rails as the ads. */
+.gif-wall{
+  display:none;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  grid-template-columns:1fr;
+  grid-auto-rows:minmax(72px,1fr);
+  gap:5px;
+  align-content:stretch;
+}
+.gif-wall .gif-cell{
+  min-height:0;
+  overflow:hidden;
+  border:3px ridge #fff;
+  background:#000;
+  box-shadow:2px 2px 0 #000;
+}
+.gif-wall img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+/* Normal state = ads. Music state = GIFs. */
+.retro-ad-rail .retro-ad{display:block}
+body.party-on .retro-ad-rail .retro-ad{display:none!important}
+body.party-on .retro-ad-rail .gif-wall{display:grid!important}
+
+/* Make the fixed rails slightly wider so GIFs actually fill the gutters. */
+.retro-ad-rail{
+  width:150px!important;
+  height:calc(100vh - 84px)!important;
+}
+@media(min-width:1450px){
+  .retro-ad-rail{width:180px!important}
+}
+@media(max-width:1180px){
+  .retro-ad-rail{display:none!important}
+}
+</style>
+
+<script id="V10-BUILD-GIF-WALLS">
+(function(){
+  const gifs=[
+    "https://media.giphy.com/media/xTiN0CNHgoRf1Ha7CM/giphy.gif",
+    "https://media.giphy.com/media/d10dMmzqCYqQ0/giphy.gif",
+    "https://media.giphy.com/media/geEvRnbQqLYsb5WOr8/giphy.gif",
+    "https://media.giphy.com/media/YPKIJdwYWJ3Ik/giphy.gif",
+    "https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif",
+    "gif_under_construction.gif",
+    "gif_email.gif",
+    "gif_new.gif",
+    "gif_skull.gif",
+    "gif_hot.gif"
+  ];
+
+  document.querySelectorAll(".retro-ad-rail").forEach((rail,railIndex)=>{
+    /* Remove older inserted GIF ad boxes so the normal state is ads only. */
+    rail.querySelectorAll(".gif-ad").forEach(x=>x.remove());
+
+    const wall=document.createElement("div");
+    wall.className="gif-wall";
+    const ordered = railIndex===0 ? gifs : [...gifs].reverse();
+
+    ordered.slice(0,7).forEach((src,i)=>{
+      const cell=document.createElement("div");
+      cell.className="gif-cell";
+      const img=document.createElement("img");
+      img.src=src;
+      img.alt="retro animated GIF";
+      img.loading="eager";
+      cell.appendChild(img);
+      wall.appendChild(cell);
+    });
+    rail.appendChild(wall);
+  });
+})();
+</script>
+
+
+<style id="V11-DANCING-I">
+/* Det enorme i står aldrig længere stille. */
+.big-i, #bigI, .giant-i,
+.answer-i, [data-answer="i"]{
+  display:inline-block!important;
+  transform-origin:50% 85%!important;
+  animation:iAlwaysDancing 1.05s steps(7,end) infinite!important;
+  will-change:transform;
+}
+@keyframes iAlwaysDancing{
+  0%   {transform:translate(0,0) rotate(-7deg) scale(1)}
+  14%  {transform:translate(-9px,-15px) rotate(8deg) scale(1.05,.96)}
+  28%  {transform:translate(8px,-4px) rotate(-11deg) scale(.96,1.08)}
+  42%  {transform:translate(-4px,-22px) rotate(5deg) scale(1.08,.94)}
+  57%  {transform:translate(10px,2px) rotate(12deg) scale(.95,1.06)}
+  71%  {transform:translate(-11px,-9px) rotate(-4deg) scale(1.04)}
+  85%  {transform:translate(5px,-18px) rotate(9deg) scale(.98,1.09)}
+  100% {transform:translate(0,0) rotate(-7deg) scale(1)}
+}
+/* Under musikken bliver dansen mere hysterisk. */
+body.party-on .big-i,
+body.party-on #bigI,
+body.party-on .giant-i,
+body.party-on .answer-i,
+body.party-on [data-answer="i"]{
+  animation:iDiscoDancing .42s steps(6,end) infinite!important;
+}
+@keyframes iDiscoDancing{
+  0%{transform:translate(-12px,0) rotate(-15deg) scale(1)}
+  20%{transform:translate(13px,-25px) rotate(18deg) scale(1.12,.9)}
+  40%{transform:translate(-8px,-8px) rotate(-20deg) scale(.9,1.15)}
+  60%{transform:translate(15px,-30px) rotate(12deg) scale(1.15,.88)}
+  80%{transform:translate(-14px,-14px) rotate(20deg) scale(.94,1.12)}
+  100%{transform:translate(-12px,0) rotate(-15deg) scale(1)}
+}
+</style>
+<script id="V11-FIND-GIANT-I">
+(function(){
+  /* Find det store selvstændige i uden at være afhængig af tidligere class-navne. */
+  const els=[...document.querySelectorAll("body *")];
+  const candidates=els.filter(el=>{
+    if(el.children.length) return false;
+    if((el.textContent||"").trim()!=="i") return false;
+    const s=getComputedStyle(el);
+    return parseFloat(s.fontSize)>=60;
+  });
+  candidates.forEach(el=>el.classList.add("big-i"));
+})();
+</script>
+
+</body>
+</html>
+<style>
+.hero small,.prompt,.path{font-family:Verdana,Arial,sans-serif!important}
+.qhead,.titlebar,nav h3{font-family:Arial,Helvetica,sans-serif!important}
+.hero h1,.answer,.nickname{font-family:"Arial Black",Impact,Arial,sans-serif!important}
+.imaginary .why{font-family:"Comic Sans MS",Arial,sans-serif!important;font-weight:bold}
+nav a{font-family:Verdana,Arial,sans-serif!important;font-size:12px!important}
+</style>
+
+<style>
+.rec-caption{display:none!important}
+</style>
